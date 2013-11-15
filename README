@@ -1,1 +1,96 @@
-Leveling up my ruby awesomeness!
+CalculatorAdvanced Kata
+   Add Method
+     Allow the expression to handle new lines between numbers
+       - example: "1\n2\n3" computes to 6
+       - example: "2,3\n4" computes to 9
+       - detail: Consecutive use of delimeters should raise an exception
+       - example: "1,\n2" or "1\n,2"
+
+       completed (Y|n):
+
+     Calling method with a negative number will give an exception
+       - detail: The exception should tell the user "negatives not allowed"
+       - detail: The exception will list the negative number that was in the string
+       - detail: The exception should list all negatives if there is more than one
+
+       completed (Y|n):
+
+     Diff and Product Method
+       should raise the same exceptions as the add method
+       - detail: Consecutive Delimiters
+       - detail: Negative Numbers
+
+       completed (Y|n):
+
+     Define Custom Delimeters
+       Allow the add method to accept a different delimiter
+       - detail: The line of the string will contain "//[delimeter]\n...
+       - detail: This line is optional and all previous tests should pass
+       - example: "//[;]\n1;2" computes to 3
+       - detail: "1;2" should raise an exception
+
+       completed (Y|n):
+
+     Allow the diff method to accept a different delimiter like add
+       - example: //[;]\n2;1 computes to 1
+
+       completed (Y|n):
+
+     Allow the prod method to accept a different delimiter like add
+       - example: //[;]\n2;1 computes to 2
+
+       completed (Y|n):
+
+     Allow the div method to accept a different delimiter like add
+       - example: //[;]\n3;2 computes to 1
+
+       completed (Y|n):
+
+     Allow the add method to handle multiple different delimeters
+       - example: multiple delimeters can be specified using "//[delimeter]...[delimeter]\n...
+       - example: "//[*][;]\n1*2;3" computes to 6
+       - example: "//[*][;][#]\n5*4;3#2" computes to -4
+                                                                                                                                                                                                                                             - example: "//[#][;][*]\n1*2#3;4,5\n6" computes to 21
+
+       completed (Y|n):
+
+    Allow the diff method to handle multiple different delimeters
+      - example: "//[*][;]\n1*2;3" computes to -4
+
+      completed (Y|n):
+
+    Allow the prod method to handle multiple different delimeters
+      - example: "//[*][;]\n1*2;3" computes to 6
+
+      completed (Y|n):
+
+    Allow the div method to handle multiple different delimeters
+      - example: "//[*][;]\n1*2;3" computes to 0
+
+      completed (Y|n):
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┓
+┃ Requirement                                                                      ┃ Time     ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the expression to handle new lines between numbers                         ┃ 00:37:20 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Calling method with a negative number will give an exception                     ┃ 00:20:55 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ should raise the same exceptions as the add method                               ┃ 00:08:41 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the add method to accept a different delimiter                             ┃ 00:22:51 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the diff method to accept a different delimiter like add                   ┃ 00:06:04 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the prod method to accept a different delimiter like add                   ┃ 00:01:49 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the div method to accept a different delimiter like add                    ┃ 00:01:46 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the add method to handle multiple different delimeters                     ┃ 00:55:48 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the diff method to handle multiple different delimeters                    ┃ 00:00:54 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the prod method to handle multiple different delimeters                    ┃ 00:00:38 ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━┫
+┃ Allow the div method to handle multiple different delimeters                     ┃ 00:00:43 ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━┛
