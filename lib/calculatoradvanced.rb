@@ -2,48 +2,59 @@ class Calculatoradvanced
   attr_reader :expr
 
   def expr=(expression='')
-    @expr = expression
+    set_expr_and_delimeters(expression)
     validate_expression
+    set_values
+    validate_values
   end
 
   alias_method :initialize, :expr=
 
-  def add
-    @values.inject(&:+)
-  end
-
-  def diff
-    @values.inject(&:-)
-  end
-
-  def prod
-    @values.inject(&:*)
-  end
-
-  def div
-    @values.inject(&:/)
+  def method_missing(meth, *args, &block)
+    case meth
+    when :add
+      @values.inject(:+)
+    when :diff
+      @values.inject(:-)
+    when :prod
+      @values.inject(:*)
+    when :div
+      @values.inject(:/)
+    else
+      super
+    end
   end
 
   private
 
+  def set_expr_and_delimeters(expression)
+    @delimiters = [",", "\n"]
+
+    # check if we have any user defined delimiters
+    if match = expression.match(/\/\/([^\n]*)\n(.*)/m)
+      @expr = match.captures[1]
+      @delimiters << match.captures[0].split(/[\[\]]/).reject! { |delimiter| delimiter == '' }
+      @delimiters.flatten!
+    else
+      @expr = expression
+    end
+  end
+
   def validate_expression
-    if @expr =~ /,\n/ || @expr =~ /\n,/
-      raise "Consecutive Delimiters"
+    @delimiters.permutation(2).to_a.each do |permutation|
+      if @expr =~ /#{Regexp.escape(permutation.join)}/
+        raise "Consecutive Delimiters"
+      end
     end
+  end
 
-    split_string = ",\n"
+  def set_values
+    @values = @expr.split(/[#{Regexp.escape(@delimiters.join)}]/).map(&:to_i)
+  end
 
-    if match = @expr.match(/\/\/([^\n]*)\n(.*)/m)
-      delimeters, @expr = match.captures
-      delimeters = delimeters.split(/[\[\]]/)
-      delimeters.reject! { |delimeter| delimeter == '' }
-      split_string = "#{Regexp.escape(delimeters.join)}" + split_string
-    end
-
-    @values = @expr.split(/[#{split_string}]/).map(&:to_i)
-
+  def validate_values
     @negatives = @values.select { |value| value < 0 }
-    if (@negatives && @negatives.any?)
+    if @negatives.any?
       raise "negatives not allowed: #{@negatives.join(', ')}"
     end
   end

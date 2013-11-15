@@ -79,4 +79,12 @@ describe Calculatoradvanced do
     let(:expression) { "//[#][;][*]\n1*2#3;4,5\n6" }
     its(:add) { should eq(21) }
   end
+  context 'with expression "//[#]\n1,#2#3"' do
+    let(:expression) { "//[#]\n1,#2#3" }
+    specify { expect { calc }.to raise_error(/Consecutive Delimiters/)  }
+  end
+  context 'with expression "//[;]\n1;2;\n3"' do
+    let(:expression) { "//[;]\n1;2;\n3" }
+    specify { expect { calc }.to raise_error(/Consecutive Delimiters/) }
+  end
 end
